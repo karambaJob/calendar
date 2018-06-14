@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import TaskList from "./containers/TaskList";
 
 export default class App extends Component {
   render() {
-    return <div>{"Calendar Init"}</div>;
+    return <TaskList />;
   }
 }
