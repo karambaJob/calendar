@@ -1,4 +1,5 @@
 var autoprefixer = require("autoprefixer");
+var path = require("path");
 
 module.exports = {
   entry: ["./src/index.js"],
@@ -18,7 +19,7 @@ module.exports = {
         use: ["babel-loader"]
       },
       {
-        test: /\.css$/,
+        test: /\.less$/,
         use: [
           require.resolve("style-loader"),
           {
@@ -26,7 +27,7 @@ module.exports = {
             options: {
               importLoaders: 1,
               modules: true,
-              localIdentName: "[name]__[local]___[hash:base64:5]"
+              localIdentName: "[name]__[local]"
             }
           },
           {
@@ -47,12 +48,16 @@ module.exports = {
                 require("postcss-modules-values")
               ]
             }
+          },
+          {
+            loader: require.resolve("less-loader")
           }
         ]
       }
     ]
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"]
+    extensions: ["*", ".js", ".jsx"],
+    modules: [path.resolve(__dirname, "src"), "node_modules"]
   }
 };
