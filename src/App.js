@@ -1,8 +1,14 @@
-import React, { Component } from "react";
-import TaskList from "./containers/taskList/TaskList";
+import React from "react";
+import Footer from "./components/footer/Footer";
+import AddTodo from "./containers/addTodo/AddTodo";
+import VisibleTodoList from "./containers/visibleTodoList/VisibleTodoList";
 
-export default class App extends Component {
-  render() {
-    return <TaskList />;
-  }
-}
+const App = () => (
+  <div>
+    <AddTodo />
+    <VisibleTodoList />
+    <Footer />
+  </div>
+);
+
+export default App;
