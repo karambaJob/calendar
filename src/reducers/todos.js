@@ -1,10 +1,21 @@
+import uuidv1 from "uuid/v1";
+
 const todos = (state = [], action) => {
   switch (action.type) {
     case "ADD_TODO":
+      if (action.parentId) {
+        const todo = state.find(todo => todo.id === action.parentId);
+        if (todo) {
+          if (!todo.items) {
+            
+          }
+        }
+        break;
+      }
       return [
         ...state,
         {
-          id: action.id,
+          id: uuidv1(),
           text: action.text,
           completed: false
         }

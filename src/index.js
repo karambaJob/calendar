@@ -7,6 +7,11 @@ import App from "./App";
 
 const store = createStore(rootReducer);
 
+store.dispatch({
+  type: "ADD_TODO",
+  text: "Init todo"
+});
+
 render(
   <Provider store={store}>
     <App />

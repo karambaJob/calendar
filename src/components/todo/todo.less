@@ -1,0 +1,14 @@
+@import '../../assets/styles/main.less';
+
+.item {
+    cursor: pointer;
+    display: flex;
+}
+
+.text {
+    flex-grow: 1;
+
+    .item--completed & {
+        text-decoration: line-through;
+    }
+}
