@@ -36,14 +36,11 @@ class TodoList extends Component {
             {todo.items &&
               todo.items.length > 0 &&
               this.renderList(todo.items, toggleTodo)}
-            <AddTodo parent_id={todo.id} />
           </li>
         ))}
       </ul>
     );
   }
-
-  clickAddHandler() {}
 }
 
 export default TodoList;

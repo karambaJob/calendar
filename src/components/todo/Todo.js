@@ -1,23 +1,46 @@
-import React from "react";
+import React, { Component } from "react";
 import style from "./todo.less";
-import TodoList from "components/todoList/TodoList";
+import AddTodo from "containers/addTodo/AddTodo";
 
-const Todo = ({ onClick, onAdd, completed, text, items = [] }) => {
-  const className = completed
-    ? [style.item, style["item--completed"]].join(" ")
-    : style.item;
+class Todo extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className={className}>
-      <div onClick={onClick} className={style.text}>
-        {text}
+    this.state = {
+      showAddForm: false
+    };
+
+    this.handleAddClick = this.handleAddClick.bind(this);
+  }
+
+  render() {
+    const { onClick, completed, text, id } = this.props;
+    const { showAddForm } = this.state;
+
+    const className = completed
+      ? [style.item, style["item--completed"]].join(" ")
+      : style.item;
+
+    return (
+      <div>
+        <div className={className}>
+          <div className={style.add} onClick={this.handleAddClick}>
+            +
+          </div>
+          <div onClick={onClick} className={style.text}>
+            {text}
+          </div>
+        </div>
+        {showAddForm && <AddTodo parent_id={id} />}
       </div>
-      <div className={style.add} onClick={onAdd}>
-        +
-      </div>
-      {items.length > 0 && <TodoList todos={items} toggleTodo={onClick} />}
-    </div>
-  );
-};
+    );
+  }
+
+  handleAddClick() {
+    this.setState({
+      showAddForm: !this.state.showAddForm
+    });
+  }
+}
 
 export default Todo;
