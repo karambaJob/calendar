@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { addTodo } from "actions";
 
-const AddTodo = ({ dispatch }) => {
+const AddTodo = ({ dispatch, parent_id }) => {
   let input;
 
   return (
@@ -13,7 +13,7 @@ const AddTodo = ({ dispatch }) => {
           if (!input.value.trim()) {
             return;
           }
-          dispatch(addTodo(input.value));
+          dispatch(addTodo(input.value, parent_id));
           input.value = "";
         }}
       >

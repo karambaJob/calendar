@@ -12,7 +12,9 @@ const Todo = ({ onClick, onAdd, completed, text, items = [] }) => {
       <div onClick={onClick} className={style.text}>
         {text}
       </div>
-      <div>sub</div>
+      <div className={style.add} onClick={onAdd}>
+        +
+      </div>
       {items.length > 0 && <TodoList todos={items} toggleTodo={onClick} />}
     </div>
   );
